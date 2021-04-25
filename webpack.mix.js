@@ -11,9 +11,8 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-.styles([
-    'resources/assets/plantilla/css/app.css',
+mix.styles([
+    //'resources/assets/plantilla/css/app.css',
     'resources/assets/plantilla/css/font-awesome.min.css',
     'resources/assets/plantilla/css/simple-line-icons.min.css',
     'resources/assets/plantilla/css/style.css'
@@ -27,5 +26,6 @@ mix.js('resources/js/app.js', 'public/js')
     'resources/assets/plantilla/js/template.js',
     'resources/assets/plantilla/js/sweetalert2.all.js'
 ], 'public/js/plantilla.js')
+    .js('resources/js/app.js', 'public/js/app.js')
     .vue()
     .sass('resources/sass/app.scss', 'public/css');
