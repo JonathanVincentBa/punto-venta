@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,13 @@ Route::get('/', function () {
     return view('contenido/contenido');
 });
 
-Auth::routes();
+Route::get('/categoria', [CategoriaController::class, 'index']);
+Route::post('/categoria/registrar', [CategoriaController::class, 'store']);
+Route::put('/categoria/actualizar', [CategoriaController::class, 'update']);
+Route::put('/categoria/activar', [CategoriaController::class, 'activar']);
+Route::put('/categoria/desactivar', [CategoriaController::class, 'desactivar']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Auth::routes();
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

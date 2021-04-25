@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Categoria extends Model
 {
-    use HasFactory;
+    //use HasFactory;
     protected $fillable = ['nombre','descripcion','condicion'];
 }
