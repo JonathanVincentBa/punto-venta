@@ -2008,6 +2008,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      categoria_id: 0,
       nombre: '',
       descripcion: '',
       arrayCategoria: [],
@@ -2036,6 +2037,23 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/categoria/registrar', {
         'nombre': this.nombre,
         'descripcion': this.descripcion
+      }).then(function (response) {})["catch"](function (error) {
+        console.log(error);
+      }).then(function () {
+        me.cerrarModal();
+        me.listarCategoria();
+      });
+    },
+    actualizarCategoria: function actualizarCategoria() {
+      if (this.validarCategoria()) {
+        return;
+      }
+
+      var me = this;
+      axios.put('/categoria/actualizar', {
+        'nombre': this.nombre,
+        'descripcion': this.descripcion,
+        'id': this.categoria_id
       }).then(function (response) {})["catch"](function (error) {
         console.log(error);
       }).then(function () {
@@ -2081,7 +2099,15 @@ __webpack_require__.r(__webpack_exports__);
                 }
 
               case 'actualizar':
-                {}
+                {
+                  //console.log(data);
+                  this.modal = 1;
+                  this.tituloModal = 'Actualizar categoria';
+                  this.tipoAccion = 2;
+                  this.categoria_id = data['id'];
+                  this.nombre = data['nombre'];
+                  this.descripcion = data['descripcion'];
+                }
             }
           }
       }
@@ -38341,7 +38367,12 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-primary",
-                        attrs: { type: "button" }
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.actualizarCategoria()
+                          }
+                        }
                       },
                       [_vm._v("Actualizar")]
                     )
