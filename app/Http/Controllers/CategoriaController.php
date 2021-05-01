@@ -13,8 +13,19 @@ class CategoriaController extends Controller
         if (!$request->ajax()){
             return redirect('/');
         }
-        $categorias = Categoria::all();
-        return $categorias;
+        $categorias =  Categoria::paginate(3);
+
+        return [
+            'pagination' => [
+                'total'         => $categorias->total(),
+                'current_page'  => $categorias->currentPage(),
+                'per_page'      => $categorias->perPage(),
+                'last_page'     => $categorias->lastPage(),
+                'from'          => $categorias->firstItem(),
+                'to'            => $categorias->lastItem(),
+            ],    
+            'categorias' => $categorias
+        ]; 
     }
 
     public function store(Request $request)
