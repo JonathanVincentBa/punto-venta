@@ -207,7 +207,7 @@
                 //Actualiza la pagina actual
                 me.pagination.current_page = page;
                 //Envia la peticion para visualizar la data de esa pagina
-                me.listarCategoria(page,buscra,criterio);
+                me.listarCategoria(page,buscar,criterio);
             },
             registrarCategoria() {
                 if (this.validarCategoria()) {

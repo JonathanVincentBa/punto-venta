@@ -2054,7 +2054,7 @@ __webpack_require__.r(__webpack_exports__);
 
       me.pagination.current_page = page; //Envia la peticion para visualizar la data de esa pagina
 
-      me.listarCategoria(page, buscra, criterio);
+      me.listarCategoria(page, buscar, criterio);
     },
     registrarCategoria: function registrarCategoria() {
       if (this.validarCategoria()) {
