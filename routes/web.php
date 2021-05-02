@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticuloController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriaController;
 
@@ -23,6 +24,12 @@ Route::post('/categoria/registrar', [CategoriaController::class, 'store']);
 Route::put('/categoria/actualizar', [CategoriaController::class, 'update']);
 Route::put('/categoria/activar', [CategoriaController::class, 'activar']);
 Route::put('/categoria/desactivar', [CategoriaController::class, 'desactivar']);
+
+Route::get('/articulo', [ArticuloController::class, 'index']);
+Route::post('/articulo/registrar', [ArticuloController::class, 'store']);
+Route::put('/articulo/actualizar', [ArticuloController::class, 'update']);
+Route::put('/articulo/activar', [ArticuloController::class, 'activar']);
+Route::put('/articulo/desactivar', [ArticuloController::class, 'desactivar']);
 
 
 //Auth::routes();
