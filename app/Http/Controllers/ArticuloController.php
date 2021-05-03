@@ -27,7 +27,7 @@ class ArticuloController extends Controller
         {
             $articulos =  Articulo::join('categorias','articulos.idcategoria','=','categorias.id')
                             ->select('articulos.id','articulos.idcategoria','articulos.codigo','articulos.nombre','categorias.nombre as nombre_categoria','articulos.precio_venta', 'articulos.stock','articulos.descripcion','articulos.condicion')
-                            ->where('articulo.'.$criterio, 'like' , '%' .$buscar. '%')
+                            ->where('articulos.'.$criterio, 'like' , '%' .$buscar. '%')
                             ->orderBy('articulos.id','desc')
                             ->paginate(3);
         }
@@ -47,11 +47,11 @@ class ArticuloController extends Controller
 
     public function store(Request $request)
     {
-        /*if (!$request->ajax()){
+        if (!$request->ajax()){
             return redirect('/');
-        }*/
+        }
         $articulo = new Articulo();
-        $articulo->id_categoria = $request->id_categoria;
+        $articulo->idcategoria = $request->idcategoria;
         $articulo->codigo = $request->codigo;
         $articulo->nombre = $request->nombre;
         $articulo->precio_venta = $request->precio_venta;
@@ -67,7 +67,7 @@ class ArticuloController extends Controller
             return redirect('/');
         }
         $articulo = Articulo::findOrFail($request->id);
-        $articulo->id_categoria = $request->id_categoria;
+        $articulo->idcategoria = $request->idcategoria;
         $articulo->codigo = $request->codigo;
         $articulo->nombre = $request->nombre;
         $articulo->precio_venta = $request->precio_venta;
